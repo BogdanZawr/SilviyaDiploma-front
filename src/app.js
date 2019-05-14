@@ -75,10 +75,10 @@ class App extends Component {
           </Link>
           <Nav style={{  textAlign: 'center', "font-family": "olddreadfulno7 bt"}} className="mr-auto">
             <Link to={'/createFiction'}>
-              <Nav.Link style={{ color: '#dfeeff' }} href="#features">Create fiction</Nav.Link>
+              <Nav.Link style={{ color: '#dfeeff', 'margin-right': 'auto !important !important' }} href="#features">Create fiction</Nav.Link>
             </Link>
           </Nav>
-          <h1 style={{ color: '#dfeeff', margin: 'auto', "font-family": "olddreadfulno7 bt"}}> Книга фанфиков </h1>
+          <h1 style={{ color: '#dfeeff', margin: 'auto', "font-family": "olddreadfulno7 bt"}}> Paper elephant </h1>
           <div style={{ 'margin-left': '5px', color: '#dfeeff' }}>
           Signed in as: <a>{this.props.user?this.props.user.firstName:'Guest'}</a>
             <Link to={'/login'}>

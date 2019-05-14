@@ -14,8 +14,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.props.registerError);
-    
     return (
       <div>
         <CreateChupterForm history={this.props.history} createChupterError={this.props.createChupterErrors} onSubmit={this.handleSubmit} />

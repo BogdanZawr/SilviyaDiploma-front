@@ -37,23 +37,22 @@ class Chapter extends Component {
 
   render() {
     const { item } = this.props;
-    console.log(item);
-    
     return (
       <div>
-        {this.props.user && this.props.user._id === this.props.fiction.userId?<Button style={{float: 'right', position: 'relative', top: '20px', right: '70px'}} size="sm" variant="primary" onClick={() => this.deleteChapter(item._id)}>Delete chapter</Button>:null}
-        <div style={{ 'border-radius': '50px', 'background-color': '#cccccc', width: '90%', textAlign: 'center', margin: 'auto', cursor: 'pointer'}} onClick={() => this.setState({ show: !this.state.show })}>
+        {this.props.user && (this.props.user.roles.includes('admin') || this.props.user._id === this.props.fiction.userId)?<Button style={{float: 'right', position: 'relative', top: '20px', right: '70px'}} size="sm" variant="primary" onClick={() => this.deleteChapter(item._id)}>Delete chapter</Button>:null}
+        <div style={{ whiteSpace: 'pre-line', 'border-radius': '50px', 'background-color': '#cccccc', width: '90%', textAlign: 'center', margin: 'auto', cursor: 'pointer'}} onClick={() => this.setState({ show: !this.state.show })}>
             <br/>
           <p>
             <h5>
             {item.name}
             </h5> 
             {/* {this.props.user && this.props.user._id === this.props.fiction.userId?<Button style={{float: 'right'}} size="sm" variant="primary">Delete chapter</Button>:null} */}
-            Number: {item.chapterNumber}
+            Chapter: {item.chapterNumber}
             <br/>
-            {this.state.show && <div style={{ textAlign: 'center'}}>
+            {this.state.show && <div style={{ textAlign: 'left', margin: '20px'}}>
               {item.content}
             </div> }
+            <br/>
           </p>
         </div>
       </div>

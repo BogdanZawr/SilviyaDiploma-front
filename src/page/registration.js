@@ -12,8 +12,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.props.registerError);
-    
     return (
       <div>
         <RegistrationForm registerError={this.props.registerErrors} onSubmit={this.handleSubmit} />

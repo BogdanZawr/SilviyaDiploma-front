@@ -16,7 +16,7 @@ const LoginForm = (props) =>  {
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
           <form onSubmit={handleSubmit}>
-          <InputGroup onSubmit={() => console.log('SUBMIT')} className="mb-3">
+          <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <Button variant="outline-secondary" type="submit">Add comment</Button>
             </InputGroup.Prepend>

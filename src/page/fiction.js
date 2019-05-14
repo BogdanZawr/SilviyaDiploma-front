@@ -35,8 +35,6 @@ class Fiction extends Component {
     this.props.getChapterList({ fictionId: this.props.location.state.fiction._id });
     this.props.getCommentsList(this.props.location.state.fiction._id);
     this.props.getLikeList(this.props.location.state.fiction._id);
-    console.log('this.props.location.state.fiction._id', this.props.location.state);
-    
   }
   
   componentWillReceiveProps(props) {
@@ -68,8 +66,6 @@ class Fiction extends Component {
 
   render() {
     const { fiction } = this.props.location.state;
-    console.log(this.props.commentList);
-    
     return (
       <div>
         <Jumbotron style={{ margin: '3rem' }} fluid>
@@ -91,7 +87,7 @@ class Fiction extends Component {
               Status: {fiction.status}
             </p>
             <p>
-              {fiction.description}
+              Description: {fiction.description}
             </p>
             <p>
             {this.props.user && this.props.user._id === fiction.userId?<Link to={{
@@ -110,7 +106,7 @@ class Fiction extends Component {
         </Jumbotron>
         <Jumbotron style={{  margin: '3rem' }} fluid>
           <Container>
-            <h1>Comments</h1>{this.props.user?<CommitForm onSubmit={this.handleSubmit}/>: <div>Likes: {this.state.like}</div> }
+            <h1>Comments</h1>{this.props.user?<CommitForm onSubmit={this.handleSubmit}/>:null }
             <p>
               {this.state.commentList && this.state.commentList.map((i) => {
               return <Comment item={i}/>

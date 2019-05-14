@@ -237,8 +237,6 @@ export const getCommentsList = (data) => async (dispatch) => {
 
 export const createComment = (data) => async (dispatch) => {
   const lSore = JSON.parse(localStorage.getItem('token'));
-  console.log(data);
-  
   try {
     const res = await axios({
       method: 'post',

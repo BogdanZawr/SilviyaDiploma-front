@@ -14,7 +14,7 @@ const LoginForm = (props) =>  {
     } = props;
 
     return <Container>
-    <Row>
+    <Row style={{color: '#ffffff'}}>
       <Col md={{ span: 6, offset: 3 }}>
         <form onSubmit={handleSubmit}>
         <div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import _ from 'lodash'
 import { connect } from 'react-redux';
-import { Button, Navbar, Card, Nav, ToggleButtonGroup ,ButtonToolbar, ToggleButton } from 'react-bootstrap';
+import { Button, Navbar, Card, Nav, Dropdown ,ButtonToolbar, ToggleButton } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { dropToken, dropUser } from '../action/auth';
 import { getFictionList, deleteFiction } from '../action/fiction';
@@ -16,6 +17,7 @@ class HomePage extends Component {
     this.state = {
       show: false,
       fictionList: [],
+      ganreList: [],
     };
 
     this.handleShow = () => {
@@ -42,12 +44,16 @@ class HomePage extends Component {
   }
 
   handleSubmit = values => {
+    if (this.state.ganreList.length > 0) {
+      _.assignIn(values, { ganre: this.state.ganreList })
+    }
     this.props.getFictionList(values);
   };
 
   render() {
     // this.props.history.push('/')
-    
+    // console.log(this.props.user.roles);
+
     return (
       <div>
           <Navbar style={{ opacity: '.8' }} bg="light" variant="light">
@@ -80,8 +86,7 @@ class HomePage extends Component {
                 }}>
                 <Button style={{ position: 'absolute', bottom: '30px' }} size="sm" variant="primary">Read</Button>
                 </Link>
-                {this.props.user && this.props.user._id === response.userId?<Button style={{ position: 'absolute', right: '6rem', bottom: '30px' }} size="sm" variant="primary">Update</Button>:null}
-                {this.props.user && this.props.user._id === response.userId?<Button style={{ position: 'absolute', right: '1rem', bottom: '30px' }} size="sm" variant="primary" onClick={() => this.deleteFiction(response)}>Delete</Button>:null}
+                {this.props.user && (this.props.user.roles.includes('admin') || this.props.user._id === response.userId)?<Button style={{ position: 'absolute', right: '1rem', bottom: '30px' }} size="sm" variant="primary" onClick={() => this.deleteFiction(response)}>Delete</Button>:null}
                 <Card.Text style={{ position: 'absolute', bottom: '0px' }}>
                 {moment(response.createdAt).format('LLLL')}
                 </Card.Text>

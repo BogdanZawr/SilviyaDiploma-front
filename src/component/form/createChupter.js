@@ -15,11 +15,11 @@ const LoginForm = (props) =>  {
     } = props;
 
     return <Container>
-        <Row>
+        <Row style={{color: '#ffffff'}}>
           <Col md={{ span: 6, offset: 3 }}>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name">Name</label>
+              <label  htmlFor="name">Name</label>
               <Field
                 name="name"
                 component={Input}

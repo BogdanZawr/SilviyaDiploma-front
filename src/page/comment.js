@@ -37,11 +37,9 @@ class Chapter extends Component {
 
   render() {
     const { item } = this.props;
-    console.log(item);
-    
     return (
       <div>
-        {this.props.user && this.props.user._id === item.userId?<Button style={{float: 'right', position: 'relative', top: '20px', right: '70px'}} size="sm" variant="primary" onClick={() => this.deleteComment(item._id)}>Delete comment</Button>:null}
+        {this.props.user && (this.props.user.roles.includes('admin') || this.props.user._id === item.userId)?<Button style={{float: 'right', position: 'relative', top: '20px', right: '70px'}} size="sm" variant="primary" onClick={() => this.deleteComment(item._id)}>Delete comment</Button>:null}
         <div style={{ 'border-radius': '20px', 'background-color': '#cccccc', width: '90%', textAlign: 'center', margin: 'auto'}}>
             <br/>
           <p>
